@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/16 11:57:40 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/16 16:29:46 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 
 # include "libft/libft.h"
 # include <mlx.h>
+
+typedef struct	s_img {
+	void	*img;
+	int		pos_x;
+	int		pos_y;
+	int		right;
+	int		left;
+	int		up;
+	int		down;
+}	t_img;
 
 typedef struct s_data
 {
