@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/16 16:29:46 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/17 14:20:21 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,27 @@ typedef struct	s_img {
 	int		left;
 	int		up;
 	int		down;
+	int		img_indx;
 }	t_img;
 
 typedef struct s_data
 {
+	char    **map_str;
 	void	*mlx;
 	void	*win;
 	int		size_x;
 	int		size_y;
+	t_img	img;
+	t_img	player;
+	t_img	enemy;
+	t_img	collec;
+	t_img	wall;
 }	t_data;
 
 char	*get_next_line(int fd);
 char	*ft_strjoin_next(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 char	*read_all(int fd, char *last);
+void	ft_free(char **s);
+int		ft_collectible_animation(t_data *ptr);
 #endif
