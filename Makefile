@@ -2,20 +2,20 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-Name = so_long
+NAME = so_long
 
 LIBFT = libft/
 
 LIBFT_NAME = libft/libft.a
 
-FILES = get_next-line/get_next_line_utils.c get_next-line/get_next_line.c /
-	main.c
+FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c main.c collectible.c
 
-FILES _O = $(FILES:.c=.o)
+FILES_O = $(FILES:.c=.o)
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
-$(NAME) : $(FILES)
+
+$(NAME): $(FILES)
 	make -C $(LIBFT)
 	$(CC) $(CFLAGS) $? $(LIBFT_NAME) -o $(NAME) $(MLX_FLAGS)
 
