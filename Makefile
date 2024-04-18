@@ -1,6 +1,6 @@
 CC = cc 
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
@@ -8,7 +8,7 @@ LIBFT = libft/
 
 LIBFT_NAME = libft/libft.a
 
-FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c main.c collectible.c
+FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c main.c collectible.c enemy.c helpers.c key_manager.c
 
 FILES_O = $(FILES:.c=.o)
 
