@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/17 18:58:23 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/21 19:35:50 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ typedef struct s_img
 	void	*img;
 	int		pos_x;
 	int		pos_y;
-	int		right;
-	int		left;
-	int		up;
-	int		down;
 	int		img_indx;
+	int		animation;
+	int		item_eaten;
 }	t_img;
 typedef struct s_data
 {
@@ -38,11 +36,15 @@ typedef struct s_data
 	void	*win;
 	int		size_x;
 	int		size_y;
+	int		num_item;
+	int		finish;
 	t_img	img;
 	t_img	player;
 	t_img	enemy;
+	t_img	enemy2;
 	t_img	item;
 	t_img	wall;
+	t_img	exit;
 }	t_data;
 char	*get_next_line(int fd);
 char	*ft_strjoin_next(char *s1, char *s2);
@@ -55,6 +57,16 @@ void	ft_destroy_all(t_data *ptr, int flag);
 void	ft_init(t_data *ptr);
 int		press_key(int keycode, t_data *ptr);
 int		ft_collectible_animation(t_data *ptr);
-int	ft_enemy_animation(t_data *ptr, int i, int j);
-
+int		right_route(t_data *ptr, int *i, int *j);
+int		left_route(t_data *ptr, int *i, int *j);
+void    move_right(t_data *ptr, int x, int y, int flag);
+void    move_left(t_data *ptr, int x, int y, int flag);
+void    move_up(t_data *ptr, int x, int y, int flag);
+void    move_down(t_data *ptr, int x, int y, int flag);
+void    ft_destroy_all(t_data *ptr, int flag);
+int		is_enemy(t_data *ptr, int x, int y);
+void    ft_exit(t_data *ptr, int i , int j);
+void    ft_exit_animation(t_data *ptr, int x, int y);
+void    bomber(t_data *ptr,int i, int j);
+int	ft_enemy_bombe(t_data *ptr);
 #endif
