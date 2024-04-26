@@ -8,12 +8,13 @@ LIBFT = libft/
 
 LIBFT_NAME = libft/libft.a
 
-FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c main.c collectible.c enemy.c helpers.c key_manager.c
+FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c parcing/check_images.c collectible.c ft_draw.c \
+		enemy.c  helpers.c key_manager.c moves.c exit.c enemy2.c player.c parcing/map_handling.c parcing/floodfill.c helpers2.c \
+		hook.c  main.c
 
 FILES_O = $(FILES:.c=.o)
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-
 
 $(NAME): $(FILES)
 	make -C $(LIBFT)
