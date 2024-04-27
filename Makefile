@@ -9,7 +9,7 @@ LIBFT = libft/
 LIBFT_NAME = libft/libft.a
 
 FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c parcing/check_images.c collectible.c ft_draw.c \
-		enemy.c  helpers.c key_manager.c moves.c exit.c enemy2.c player.c parcing/map_handling.c parcing/floodfill.c helpers2.c \
+		enemy/enemy.c enemy/enemy_explosion.c enemy/enemy_animation.c helpers.c key_manager.c moves/left_right_movec.c moves/up_down_moves.c exit.c enemy/enemy2.c player.c parcing/map_handling.c parcing/floodfill.c helpers2.c \
 		hook.c  main.c
 
 FILES_O = $(FILES:.c=.o)
