@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:09:21 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 15:36:19 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 17:00:47 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	ft_exit_helper(t_data *ptr, int index)
 	if (index == 120)
 		ft_destroy_all(ptr, "YOU WIN :)", 1);
 	else if (index == 20)
-		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, "./textures/\
-		player/player_sprite/down/0.xpm", &ptr->size_x, &ptr->size_y);
+		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, \
+		"./textures/player/player_sprite/down/0.xpm"\
+		, &ptr->size_x, &ptr->size_y);
 	else if (index == 40)
 		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, \
 		"./textures/player/player_sprite/up/4.xpm", &ptr->size_x, &ptr->size_y);

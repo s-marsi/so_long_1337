@@ -6,13 +6,13 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:52:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 14:32:53 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 16:15:14 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	right_route_helper(t_data *ptr, int *i, int *j)
+void	right_route_helper(t_data *ptr, int *i, int *j)
 {
 	if (ptr->player.item_eaten > (ptr->num_item / 2))
 		ft_enemy_animation2(ptr, *i, *j, 'N');
@@ -46,7 +46,7 @@ int	right_route(t_data *ptr, int *i, int *j)
 	return (0);
 }
 
-int	left_route_helper(t_data *ptr, int *i, int *j)
+void	left_route_helper(t_data *ptr, int *i, int *j)
 {
 	if (ptr->player.item_eaten > (ptr->num_item / 2))
 		ft_enemy_animation2(ptr, *i, *j, 'n');

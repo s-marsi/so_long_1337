@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:15:49 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 15:19:32 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 17:47:17 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	check_true(t_data *ptr, int i, int j)
 	return (0);
 }
 
-static int	ft_collectible_helper(t_data *ptr, int i, int j)
+static void	ft_collectible_helper(t_data *ptr, int i, int j)
 {
 	int (x), (y);
 	y = i * 50;

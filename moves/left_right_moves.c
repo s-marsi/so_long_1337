@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:46:27 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 14:55:10 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 16:26:48 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	move_right_helper(t_data *ptr, int x, int y, int i)
 {
 	char	*path;
 
+	path = NULL;
 	if (ptr->map_str[y][x + 1] == 'C' || ptr->map_str[y][x + 1] == '1')
 		path = "./textures/player/player_sprite/right/0.xpm";
 	else if (i < 2)
@@ -44,8 +45,9 @@ void	move_right_helper(t_data *ptr, int x, int y, int i)
 		path = "./textures/player/player_sprite/right/0.xpm";
 		ptr->player.img_indx = 0;
 	}
-	ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-	&ptr->size_x, &ptr->size_y);
+	if (path)
+		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
+		&ptr->size_x, &ptr->size_y);
 }
 
 void	move_right(t_data *ptr, int x, int y, int flag)
@@ -74,6 +76,7 @@ void	move_left_helper(t_data *ptr, int x, int y, int i)
 {
 	char	*path;
 
+	path = NULL;
 	if (ptr->map_str[y][x - 1] == 'C' || ptr->map_str[y][x - 1] == '1')
 		path = "./textures/player/player_sprite/left/0.xpm";
 	else if (i < 2)
@@ -89,8 +92,9 @@ void	move_left_helper(t_data *ptr, int x, int y, int i)
 		path = "./textures/player/player_sprite/left/0.xpm";
 		ptr->player.img_indx = 0;
 	}
-	ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-	&ptr->size_x, &ptr->size_y);
+	if (path)
+		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
+		&ptr->size_x, &ptr->size_y);
 }
 
 void	move_left(t_data *ptr, int x, int y, int flag)
@@ -110,6 +114,7 @@ void	move_left(t_data *ptr, int x, int y, int flag)
 	ptr->player.pos_x -= 1;
 	x--;
 	i = ptr->player.img_indx;
+	move_left_helper(ptr, x, y, i);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->player.img, x * 50, y * 50);
 }

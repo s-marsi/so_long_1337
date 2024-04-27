@@ -6,13 +6,13 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:03:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 15:31:51 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 15:58:09 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_draw_helper(t_data *ptr, int i, int j)
+void	ft_draw_helper(t_data *ptr, int i, int j)
 {
 	if (ptr->map_str[i][j] == 'P')
 	{
