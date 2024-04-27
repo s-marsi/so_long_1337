@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:53:02 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 14:35:19 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 17:55:37 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	bombe_animation(t_data *ptr, int i, int j)
 	static int	c;
 
 	int (n), (index);
-	n = (25 / (ptr->player.item_eaten + 1));
+	n = (15 / (ptr->player.item_eaten + 1));
+	if (n == 0)
+		n = 1;
 	if (c % n == 0)
 	{
 		index = ptr->enemy2.img_indx;
