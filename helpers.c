@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:24:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/17 16:55:41 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/27 15:26:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,67 @@ void	ft_free(char **s)
 	s = NULL;
 }
 
-void    ft_destroy_all(t_data *ptr, int flag)
+void	blow_up(t_data *ptr, int i, int j)
 {
-    if (flag == 0)
-        printf("YOU LOSE :(\n");
-    else
-        printf("YOU WON :)\n");
-    mlx_destroy_image(ptr->mlx, ptr->img.img);
-    mlx_destroy_image(ptr->mlx, ptr->player.img);
-    mlx_destroy_image(ptr->mlx, ptr->wall.img);
-    mlx_destroy_image(ptr->mlx, ptr->enemy.img);
-    mlx_destroy_image(ptr->mlx, ptr->item.img);
-    mlx_destroy_window(ptr->mlx, ptr->win);
-	//mlx_destroy_display(ptr->mlx);
-    free(ptr->mlx); ft_free(ptr->map_str);
-    exit(0);
+	static int	index;
+	char		*path;
+
+	if (ptr->enemy.img_indx == 9)
+		ptr->enemy.img_indx = 0;
+	index++;
+	if (index % 20000 == 0)
+	{
+		path = make_path(ptr->enemy.img_indx, "./images/player/enemy/attack/");
+		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
+		&ptr->size_x, &ptr->size_y);
+		ptr->enemy.img_indx++;
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->img.img, j * 50, i * 50);
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->enemy.img, j * 50, i * 50);
+		mlx_destroy_image(ptr->mlx, ptr->enemy.img);
+	}
 }
 
-
-void    ft_init(t_data *ptr)
+void	ft_destroy_all(t_data *ptr, char *msg, int fd)
 {
-    ptr->player.right = 0;
-    ptr->player.left = -1;
-    ptr->player.up = -1;
-    ptr->player.down = -1;
-    ptr->item.img_indx = 0;
-     ptr->enemy.right = 0;
-    ptr->enemy.left = -1;
-      // ptr->img.img = mlx_xpm_file_to_image(ptr->mlx, "./images/background/brow1.xpm", &ptr->size_x, &ptr->size_y);
-    // ptr->img.img = mlx_xpm_file_to_image(ptr->mlx, "./images/background/blue2.xpm", &ptr->size_x, &ptr->size_y);
-    // ptr->img.img = mlx_xpm_file_to_image(ptr->mlx, "./images/background/gazo.xpm", &ptr->size_x, &ptr->size_y);
-    ptr->img.img = mlx_xpm_file_to_image(ptr->mlx, "./images/background/brow2.xpm", &ptr->size_x, &ptr->size_y);
-    // ptr->img.img = mlx_xpm_file_to_image(ptr->mlx, "./images/background/yellow.xpm", &ptr->size_x, &ptr->size_y);
-    // ptr->wall.img = mlx_xpm_file_to_image(ptr->mlx, "./images/wall/gray.xpm", &ptr->size_x, &ptr->size_y);
-    // ptr->wall.img = mlx_xpm_file_to_image(ptr->mlx, "./images/wall/red.xpm", &ptr->size_x, &ptr->size_y);
-    // ptr->wall.img = mlx_xpm_file_to_image(ptr->mlx, "./images/wall/rock.xpm", &ptr->size_x, &ptr->size_y);
-    ptr->wall.img = mlx_xpm_file_to_image(ptr->mlx, "./images/wall/stone_green.xpm", &ptr->size_x, &ptr->size_y);
-    ptr->item.img = mlx_xpm_file_to_image(ptr->mlx, "./images/collection/0.xpm", &ptr->size_x, &ptr->size_y);
-    ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, "./images/player/player_sprite/right/0.xpm", &ptr->size_x, &ptr->size_y);
-    ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, "./images/player/enemy/right/0.xpm", &ptr->size_x, &ptr->size_y);
+	ft_putstr_fd(msg, fd);
+	mlx_clear_window(ptr->map_str, ptr->win);
+	mlx_destroy_window(ptr->mlx, ptr->win);
+	free(ptr->mlx);
+	ft_free(ptr->map_str);
+	exit(0);
+}
+
+static void	ft_init_images(t_data *ptr)
+{
+	ptr->img.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/background/green_2.xpm", &ptr->size_x, &ptr->size_y);
+	ptr->wall.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/wall/stone.xpm", &ptr->size_x, &ptr->size_y);
+	ptr->item.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/collection/0.xpm", &ptr->size_x, &ptr->size_y);
+	ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/player/player_sprite/down/0.xpm", &ptr->size_x, &ptr->size_y);
+	ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/player/enemy/right/0.xpm", &ptr->size_x, &ptr->size_y);
+	ptr->enemy2.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/player/enemy4/0.xpm", &ptr->size_x, &ptr->size_y);
+	ptr->exit.img = mlx_xpm_file_to_image(ptr->mlx, \
+	"./textures/exit/0.xpm", &ptr->size_x, &ptr->size_y);
+}
+
+void	ft_init(t_data *ptr)
+{
+	ptr->item.img_indx = 0;
+	ptr->player.img_indx = 0;
+	ptr->enemy.img_indx = 0;
+	ptr->enemy2.img_indx = 0;
+	ptr->bomb = 0;
+	ptr->player.animation = 0;
+	ptr->player.item_eaten = 0;
+	ptr->num_item = 0;
+	ptr->finish = 0;
+	ptr->kill_all = 0;
+	ft_init(ptr);
 }

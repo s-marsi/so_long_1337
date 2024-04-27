@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:56:44 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 18:27:05 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/25 13:14:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 int			ft_isdigit(int c);
 size_t		ft_strlen(const char *s);
+int			ft_strcmp(const char *s1, const char *s2);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 long long	ft_atoi(char *str);
@@ -32,6 +33,7 @@ char		*ft_strdup(const char *s1);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
+char		*ft_itoa(int n);
 typedef struct s_list
 {
 	int				content;
@@ -47,4 +49,5 @@ void		ft_lstdelone(t_stack *lst, void (*del)(int));
 void		ft_lstclear(t_stack **lst, void (*del)(int));
 void		ft_lstiter(t_stack **lst);
 t_stack		*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int));
+void		ft_putstr_fd(char *s, int fd);
 #endif
