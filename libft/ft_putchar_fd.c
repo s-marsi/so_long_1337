@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd_bonus.c                               :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 10:24:24 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 14:41:35 by smarsi           ###   ########.fr       */
+/*   Created: 2024/04/29 14:37:30 by smarsi            #+#    #+#             */
+/*   Updated: 2024/04/29 14:37:40 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (!s)
-		return ;
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
+	if (fd >= 0)
+		write(fd, &c, 1);
 }

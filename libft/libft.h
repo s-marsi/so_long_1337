@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:56:44 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/25 13:14:23 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:41:11 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ void		ft_lstdelone(t_stack *lst, void (*del)(int));
 void		ft_lstclear(t_stack **lst, void (*del)(int));
 void		ft_lstiter(t_stack **lst);
 t_stack		*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int));
+void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
+
 #endif
