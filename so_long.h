@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 14:37:59 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:22:19 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 	int		finish;
 	int		kill_all;
 	int		bomb;
+	int		moves_number;
 	t_img	img;
 	t_img	player;
 	t_img	enemy;
@@ -87,4 +88,5 @@ void	is_valid_map(char *name);
 void	flood_fill(t_data *ptr);
 void	ft_enemy_animation(t_data *ptr, int i, int j, char c);
 void	ft_enemy_animation2(t_data *ptr, int i, int j, char c);
+void	check_double(t_data *ptr);
 #endif

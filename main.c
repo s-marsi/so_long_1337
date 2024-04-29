@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:45:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 16:06:36 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:45:26 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	create_windows(t_data *ptr)
 	ft_draw(ptr);
 	mlx_hook(ptr->win, 2, 0, press_key, ptr);
 	mlx_loop_hook(ptr->mlx, ft_collectible_animation, ptr);
+	ft_putstr_fd("MOVES : ", 1);
+	ft_putnbr_fd(ptr->moves_number, 1);
+	ft_putstr_fd("\n", 1);
 	mlx_loop(ptr->mlx);
 }
 
@@ -46,6 +49,7 @@ int	main(int ac, char *av[])
 	check_images();
 	is_valid_map(av[1]);
 	ptr.map_str = get_map(&ptr, av[1]);
+	check_double(&ptr);
 	ptr.map_check = get_map(&ptr, av[1]);
 	flood_fill(&ptr);
 	create_windows(&ptr);

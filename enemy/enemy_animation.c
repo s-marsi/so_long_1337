@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:20:37 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 17:01:29 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:43:19 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	right_animation(t_data *ptr, int *a, char c, int *index)
 	i = a[0];
 	j = a[1];
 	path = NULL;
-	printf("%d\n", *index);
 	if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == '1')
 		path = "./textures/player/enemy/right/0.xpm";
 	else if (*index <= 1)
