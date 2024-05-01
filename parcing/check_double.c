@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:24 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 12:23:16 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:13:56 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@ static int	check_in_str(char c, int *tab)
 		if (str[i] == c)
 		{
 			tab[i] += 1;
-			return (0);	
+			return (0);
 		}
 		else if (c == '\n')
 			return (0);
 		i++;
 	}
-	
 	return (1);
 }
 

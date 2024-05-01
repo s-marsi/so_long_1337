@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 14:22:19 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/04/29 16:58:22 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,6 @@ void	flood_fill(t_data *ptr);
 void	ft_enemy_animation(t_data *ptr, int i, int j, char c);
 void	ft_enemy_animation2(t_data *ptr, int i, int j, char c);
 void	check_double(t_data *ptr);
+void	print_moves(t_data *ptr);
+void	print_moves2(t_data *ptr);
 #endif
