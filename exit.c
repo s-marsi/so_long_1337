@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:09:21 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 16:14:47 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 08:37:02 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 void	ft_exit(t_data *ptr, int i, int j)
 {
-	if (ptr->num_item == 0)
+	if (ptr->player.item_eaten == 0)
 		ptr->exit.img = mlx_xpm_file_to_image(ptr->mlx, \
-		"./textures/exit/0.xpm", &ptr->size_x, &ptr->size_y);
+		"./textures/exit/3.xpm", &ptr->size_x, &ptr->size_y);
 	else if (ptr->player.item_eaten == (ptr->num_item / 2))
+		ptr->exit.img = mlx_xpm_file_to_image(ptr->mlx, \
+		"./textures/exit/2.xpm", &ptr->size_x, &ptr->size_y);
+	else if (ptr->player.item_eaten == ptr->num_item / 3)
 		ptr->exit.img = mlx_xpm_file_to_image(ptr->mlx, \
 		"./textures/exit/1.xpm", &ptr->size_x, &ptr->size_y);
 	else if (ptr->player.item_eaten == ptr->num_item)
 		ptr->exit.img = mlx_xpm_file_to_image(ptr->mlx, \
-		"./textures/exit/2.xpm", &ptr->size_x, &ptr->size_y);
+		"./textures/exit/0.xpm", &ptr->size_x, &ptr->size_y);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->img.img, j * 50, i * 50);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \

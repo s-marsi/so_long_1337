@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:24:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 14:22:28 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:49:33 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	ft_init(t_data *ptr)
 	ptr->finish = 0;
 	ptr->kill_all = 0;
 	ptr->moves_number = 0;
+	ptr->attack = 0;
 	ft_init_images(ptr);
 }
