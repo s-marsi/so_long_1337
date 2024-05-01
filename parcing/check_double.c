@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:24 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:13:56 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:23:17 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	fill_arr(t_data *ptr, int *tab)
 
 void	check_double(t_data *ptr)
 {
-	int (tab[7]), (i), (j);
+	int (tab[7]), (i);
 	i = 0;
 	while (i <= 6)
 		tab[i++] = 0;

@@ -6,13 +6,13 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:02:05 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 16:12:31 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:21:41 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	right_animation(t_data *ptr, int i, int j, int index)
+static void	right_animation(t_data *ptr, int index)
 {
 	char	*path;
 
@@ -27,7 +27,7 @@ static void	right_animation(t_data *ptr, int i, int j, int index)
 	free(path);
 }
 
-static void	left_animation(t_data *ptr, int i, int j, int index)
+static void	left_animation(t_data *ptr, int index)
 {
 	char	*path;
 
@@ -42,7 +42,7 @@ static void	left_animation(t_data *ptr, int i, int j, int index)
 	free(path);
 }
 
-static void	up_animation(t_data *ptr, int i, int j, int index)
+static void	up_animation(t_data *ptr, int index)
 {
 	char	*path;
 
@@ -60,17 +60,17 @@ static void	up_animation(t_data *ptr, int i, int j, int index)
 void	ft_player_animation(t_data *ptr, int i, int j)
 {
 	static int	c;
+	int			index;
 
-	int (n), (index);
 	index = ptr->player.img_indx;
 	if (c % 10 == 0)
 	{
 		if (ptr->player.animation == 0)
-			right_animation(ptr, i, j, index);
+			right_animation(ptr, index);
 		else if (ptr->player.animation <= 2)
-			left_animation(ptr, i, j, index);
+			left_animation(ptr, index);
 		else if (ptr->player.animation == 3)
-			up_animation(ptr, i, j, index);
+			up_animation(ptr, index);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \

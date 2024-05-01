@@ -1,6 +1,6 @@
 CC = cc 
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
@@ -17,9 +17,9 @@ FILES_O = $(FILES:.c=.o)
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
-$(NAME): $(FILES)
+$(NAME): $(FILES_O)
 	make -C $(LIBFT)
-	$(CC) $(CFLAGS) $? $(LIBFT_NAME) -o $(NAME) $(MLX_FLAGS)
+	$(CC) $(CFLAGS) $(FILES_O) $(LIBFT_NAME) -o $(NAME) $(MLX_FLAGS)
 
 clean : 
 	make clean -C $(LIBFT)
