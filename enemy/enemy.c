@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:52:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 16:15:14 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 10:05:24 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	right_route_helper(t_data *ptr, int *i, int *j)
 int	right_route(t_data *ptr, int *i, int *j)
 {
 	static int	c;
+	int			n;
 
-	int (y), (n);
 	c++;
 	n = (25 / (ptr->player.item_eaten + 1));
 	if (c % n == 0)
@@ -57,8 +57,8 @@ void	left_route_helper(t_data *ptr, int *i, int *j)
 int	left_route(t_data *ptr, int *i, int *j)
 {
 	static int	c;
+	int			n;
 
-	int (y), (n);
 	c++;
 	n = (25 / (ptr->player.item_eaten + 1));
 	if (c % n == 0)

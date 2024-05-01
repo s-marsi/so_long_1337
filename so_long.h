@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 16:58:22 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 10:08:17 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	int		num_item;
 	int		finish;
 	int		kill_all;
+	int		attack;
 	int		bomb;
 	int		moves_number;
 	t_img	img;
@@ -91,4 +92,6 @@ void	ft_enemy_animation2(t_data *ptr, int i, int j, char c);
 void	check_double(t_data *ptr);
 void	print_moves(t_data *ptr);
 void	print_moves2(t_data *ptr);
+void	attack_right(t_data *ptr, int x, int y);
+void	attack_left(t_data *ptr, int x, int y);
 #endif

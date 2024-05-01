@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:02:14 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 11:59:45 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:22:18 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	get_player_position(t_data *ptr, int *x, int *y)
 
 void	flood_fill(t_data *ptr)
 {
-	char	str;
-
 	int (i), (j);
 	i = 0;
 	get_player_position(ptr, &i, &j);

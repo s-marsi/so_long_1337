@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:46:27 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 16:58:33 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 09:33:35 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_right_helper(t_data *ptr, int x, int y, int i)
 {
 	char	*path;
 
-	path = NULL;
+	path = "./textures/player/player_sprite/right/0.xpm";
 	if (ptr->map_str[y][x + 1] == 'C' || ptr->map_str[y][x + 1] == '1')
 		path = "./textures/player/player_sprite/right/0.xpm";
 	else if (i < 2)
@@ -78,7 +78,7 @@ void	move_left_helper(t_data *ptr, int x, int y, int i)
 {
 	char	*path;
 
-	path = NULL;
+	path = "./textures/player/player_sprite/left/0.xpm";
 	if (ptr->map_str[y][x - 1] == 'C' || ptr->map_str[y][x - 1] == '1')
 		path = "./textures/player/player_sprite/left/0.xpm";
 	else if (i < 2)

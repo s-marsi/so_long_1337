@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:15:49 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 16:41:22 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 10:05:55 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	ft_collectible_animation(t_data *ptr)
 				ft_enemy_bombe(ptr, i, j);
 			else if (ptr->map_str[i][j] == 'P' && ptr->finish)
 				ft_exit_animation(ptr, i, j);
+			else if (ptr->map_str[i][j] == 'P' && ptr->attack && !ptr->bomb)
+				press_key(3, ptr);
 			else if (!ptr->finish && !ptr->bomb)
 				ft_collectible_helper(ptr, i, j);
 			j++;

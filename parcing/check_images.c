@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:22:06 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 13:06:18 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:18:12 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	enemy_2_images(void)
 	char	*path;
 	int		i;
 
+	i = 0;
 	while (i <= 9)
 	{
 		path = make_path(i, "./textures/player/enemy/angry/attack/");

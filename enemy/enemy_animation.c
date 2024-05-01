@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:20:37 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 17:06:49 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:20:01 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	put_img(t_data *ptr, int i, int j)
 	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->enemy.img, j * 50, i * 50);
 }
 
-static void	right_animation(t_data *ptr, int *a, char c, int *index)
+static void	right_animation(t_data *ptr, int *a, int *index)
 {
 	char	*path;
 
@@ -67,11 +67,11 @@ void	ft_enemy_animation(t_data *ptr, int i, int j, char c)
 			&ptr->size_x, &ptr->size_y);
 	}
 	else
-		right_animation(ptr, a, c, &index);
+		right_animation(ptr, a, &index);
 	(put_img(ptr, i, j), index++);
 }
 
-void	right_animation2(t_data *ptr, int *a, char c, int *index)
+void	right_animation2(t_data *ptr, int *a, int *index)
 {
 	char		*path;
 
@@ -118,6 +118,6 @@ void	ft_enemy_animation2(t_data *ptr, int i, int j, char c)
 			&ptr->size_x, &ptr->size_y);
 	}
 	else
-		right_animation2(ptr, a, c, &index);
+		right_animation2(ptr, a, &index);
 	(put_img(ptr, i, j), index++);
 }

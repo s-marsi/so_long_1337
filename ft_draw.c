@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:03:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/29 13:12:37 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 06:27:22 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int	ft_draw(t_data *ptr)
 		}
 		i++;
 	}
+	mlx_string_put(ptr->mlx, ptr->win, 25, 15, 0x00FF0000, "MOVES : 0");
 	return (0);
 }
