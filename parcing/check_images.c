@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:22:06 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:18:12 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 08:38:27 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	enemy_images(void)
 static void	coll_exit_images(void)
 {
 	char	*path;
+	char	*path2;
 	int		i;
 
 	i = 0;
@@ -78,6 +79,8 @@ static void	coll_exit_images(void)
 	{
 		path = make_path(i, "./textures/collection/");
 		check_access(path);
+		path2 = make_path(i, "./textures/win/");
+		check_access(path2);
 		i++;
 	}
 	i = 0;
@@ -85,6 +88,8 @@ static void	coll_exit_images(void)
 	{
 		path = make_path(i, "./textures/exit/");
 		check_access(path);
+		path2 = make_path(i, "./textures/player/enemy4/dead/");
+		check_access(path2);
 		i++;
 	}
 }

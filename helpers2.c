@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:08:55 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 15:26:49 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 08:36:08 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,6 @@ char	*ft_strjoin2(char *s1, char *s2)
 	ft_strlcat(str, s1, ft_strlen(s1) + 1);
 	ft_strlcat(str, s2, len);
 	return (str);
-}
-
-int	check_access(char *path)
-{
-	if (access(path, R_OK) == -1)
-	{
-		free(path);
-		ft_putstr_fd("Error : Image not found\n", 2);
-		exit (1);
-	}
-	free(path);
-	path = NULL;
-	return (0);
 }
 
 char	*make_path(int nb, char *path)
