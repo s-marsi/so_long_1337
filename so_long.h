@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 12:05:51 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 15:15:22 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	attack_left(t_data *ptr, int x, int y);
 void	call_img(t_data *ptr, char *path, int i);
 void	ft_win(t_data *ptr, int i, int j);
 void	ft_lose(t_data *ptr, int i, int j);
-void    game_over(t_data *ptr, int x, int y);
-void    game_over_two(t_data *ptr, int x, int y);
+void	game_over(t_data *ptr, int x, int y);
+void	game_over_two(t_data *ptr, int x, int y);
 #endif

@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:02:05 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 10:59:27 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 15:11:39 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ void	ft_player_animation(t_data *ptr, int i, int j)
 			up_animation(ptr, index);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);
+		if (!ptr->player.img)
+			ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, \
+			"./textures/player/player_sprite/idle/up/0.xpm", \
+			&ptr->size_x, &ptr->size_y);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->player.img, j * 50, i * 50);
 	}

@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:24 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 12:06:25 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 15:12:53 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	ft_error(char **str)
 {
 	write(2, "MAP NOT VALID\n", 14);
 	ft_free(str);
-
 	exit(1);
 }
 

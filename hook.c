@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:15:49 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 13:34:15 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 15:15:13 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_collectible_animation(t_data *ptr)
 				press_key(3, ptr);
 			else if (!ptr->finish && !ptr->bomb)
 				ft_collectible_helper(ptr, i, j);
-			j++; 
+			j++;
 		}
 		i++;
 	}

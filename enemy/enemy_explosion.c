@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:31:19 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 14:19:25 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 15:17:43 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ static void	ft_bombe_line(t_data *ptr, int i, int j, int *index)
 		path = make_path(pl_indx, "./textures/player/player_sprite/dead/");
 		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
 		&ptr->size_x, &ptr->size_y);
-		free(path);
-		ptr->player.img_indx++;
+		(free(path), ptr->player.img_indx++);
 		ptr->enemy.img_indx++;
 		(check_true(ptr, i, j - 1), check_true(ptr, i, j + 1));
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
