@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 11:02:19 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 12:05:51 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	blow_up(t_data *ptr, int i, int j);
 char	*make_path(int nb, char *path);
 char	*ft_strjoin2(char *s1, char *s2);
 void	ft_collectible_img(t_data *ptr);
-void	blow_up_all(t_data *ptr, int i, int j);
 int		check_access(char *path);
 void	check_images(void);
 void	is_valid_map(char *name);

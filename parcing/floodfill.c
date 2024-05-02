@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:02:14 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:22:18 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 12:08:35 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_map(t_data *ptr)
 			{
 				ft_free(ptr->map_check);
 				ft_putstr_fd("player cannot eat all items or exit.\n", 2);
-				exit(2);
+				exit(1);
 			}
 			j++;
 		}

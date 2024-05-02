@@ -6,19 +6,11 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:05:46 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 11:43:52 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 14:37:06 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-// static void	call_img(t_data *ptr, char *path, int i)
-// {
-// 	path = make_path(i, path);
-// 	ptr->exit.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-// 	&ptr->size_x, &ptr->size_y);
-// 	free(path);
-// }
 
 void	draw_player(t_data *ptr, int x, int y)
 {
@@ -48,40 +40,15 @@ static void	draw_lose(t_data *ptr)
 	int (x), (y);
 	x = ((ptr->size_y_map / 2)) * 50;
 	y = ((ptr->size_x_map / 2) - 4);
-	// call_img(ptr, "./textures/lose/1/", 0);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 1);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 1) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 2);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 2) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 3);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 3) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 4);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 5) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 5);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 6) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 6);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 7) * 50, x);
-	// call_img(ptr, "./textures/lose/1/", 7);
-	// mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	// ptr->exit.img, (y + 8) * 50, x);
-	if (c <= -125 )
+	if (c <= 50)
+	{
 		game_over(ptr, x, y);
+		draw_player(ptr, x, y);
+	}
 	else
 		game_over_two(ptr, x, y);
-	if (c == 0)
-	{
-		game_over_two(ptr, x, y);
-		draw_player(ptr, x, y);
-		c = -300;
-	}
+	if (c == 100)
+		c = 0;
 	c++;
 }
 
@@ -90,8 +57,8 @@ static void	lose_bomb(t_data *ptr, int i, int j)
 	int		n;
 	char	*path;
 
-	if (ptr->enemy2.img_indx > 2)
-		ptr->enemy2.img_indx = 0;
+	if (ptr->enemy2.img_indx >= 1)
+		ptr->enemy2.img_indx = 2;
 	n = ptr->enemy2.img_indx;
 	path = make_path(n, "./textures/player/enemy4/dead/");
 	ptr->enemy2.img = mlx_xpm_file_to_image(ptr->mlx, path, \
@@ -115,8 +82,8 @@ void	ft_lose(t_data *ptr, int i, int j)
 
 	draw_lose(ptr);
 	c++;
-	if (c == 1000)
-		ft_destroy_all(ptr, 0, 1);
+	if (c == 800)
+		ft_destroy_all(ptr, 1, 1);
 	if (ptr->map_str[i][j] == 'C')
 	{
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
