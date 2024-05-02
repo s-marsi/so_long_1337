@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:15:49 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 10:05:55 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 07:10:07 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	blow_up_all(t_data *ptr, int i, int j)
 	ptr->kill_all++;
 	index = ptr->enemy.img_indx;
 	if (ptr->kill_all == 500)
-		ft_destroy_all(ptr, "YOU LOSE :(", 1);
+		ft_destroy_all(ptr, 1, 1);
 	if (index > 9)
 		path = make_path(2, "./textures/background/green_");
 	else
@@ -82,8 +82,10 @@ int	ft_collectible_animation(t_data *ptr)
 				blow_up_all(ptr, i, j);
 			else if (ptr->map_str[i][j] == 'P' && ptr->bomb == 1)
 				ft_enemy_bombe(ptr, i, j);
-			else if (ptr->map_str[i][j] == 'P' && ptr->finish)
+			else if (ptr->map_str[i][j] == 'P' && ptr->finish == 1)
 				ft_exit_animation(ptr, i, j);
+			else if (ptr->finish == 2)
+				ft_win(ptr, i, j);
 			else if (ptr->map_str[i][j] == 'P' && ptr->attack && !ptr->bomb)
 				press_key(3, ptr);
 			else if (!ptr->finish && !ptr->bomb)

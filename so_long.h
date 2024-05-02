@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 10:08:17 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 08:29:27 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	ft_free(char **s);
 void	ft_init(t_data *ptr);
 int		ft_draw(t_data *ptr);
 int		press_key(int keycode, t_data *ptr);
-int		right_route(t_data *ptr, int *i, int *j);
-int		left_route(t_data *ptr, int *i, int *j);
+void	right_route(t_data *ptr, int *i, int *j);
+void	left_route(t_data *ptr, int *i, int *j);
 void	move_right(t_data *ptr, int x, int y, int flag);
 void	move_left(t_data *ptr, int x, int y, int flag);
 void	move_up(t_data *ptr, int x, int y, int flag);
 void	move_down(t_data *ptr, int x, int y, int flag);
-void	ft_destroy_all(t_data *ptr, char *msg, int fd);
+void	ft_destroy_all(t_data *ptr, int flag, int fd);
 int		is_enemy(t_data *ptr, int x, int y);
 void	ft_exit(t_data *ptr, int i, int j);
 void	ft_exit_animation(t_data *ptr, int x, int y);
@@ -94,4 +94,5 @@ void	print_moves(t_data *ptr);
 void	print_moves2(t_data *ptr);
 void	attack_right(t_data *ptr, int x, int y);
 void	attack_left(t_data *ptr, int x, int y);
+void	ft_win(t_data *ptr, int i, int j);
 #endif

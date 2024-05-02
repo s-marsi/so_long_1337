@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:24:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:49:33 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 11:41:57 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ void	blow_up(t_data *ptr, int i, int j)
 	}
 }
 
-void	ft_destroy_all(t_data *ptr, char *msg, int fd)
+void	ft_destroy_all(t_data *ptr, int flag, int fd)
 {
-	ft_putstr_fd(msg, fd);
+	if (flag == 1)
+		ft_putstr_fd("YOU LOSE :(\n", fd);
+	else if (flag == 0)
+		ft_putstr_fd("YOU WIN :(\n", fd);
+	ft_putstr_fd("Thanks for playing!\n", fd);
 	mlx_clear_window(ptr->map_str, ptr->win);
 	mlx_destroy_window(ptr->mlx, ptr->win);
 	free(ptr->mlx);

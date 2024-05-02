@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:30:12 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 10:44:58 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 10:54:20 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	new_image(t_data *ptr, int keycode)
 int	press_key(int keycode, t_data *ptr)
 {
 	if (keycode == 53)
-		ft_destroy_all(ptr, NULL, 1);
+		ft_destroy_all(ptr, 2, 1);
 	else if (keycode == 0 || keycode == 2
 		|| keycode == 13 || keycode == 1)
 	{

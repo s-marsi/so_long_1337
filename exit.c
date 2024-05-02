@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:09:21 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 08:37:02 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 08:27:24 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	ft_exit(t_data *ptr, int i, int j)
 
 void	ft_exit_helper(t_data *ptr, int index)
 {
-	if (index == 120)
-		ft_destroy_all(ptr, "YOU WIN :)", 1);
-	else if (index == 20)
+	if (index == 20)
 		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, \
 		"./textures/player/player_sprite/down/0.xpm"\
 		, &ptr->size_x, &ptr->size_y);
@@ -59,14 +57,21 @@ void	ft_exit_animation(t_data *ptr, int x, int y)
 	static int	index;
 
 	ptr->finish = 1;
-	ft_exit_helper(ptr, index);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->img.img, y * 50, x * 50);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->exit.img, y * 50, x * 50);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->player.img, y * 50, x * 50);
-	mlx_string_put(ptr->mlx, ptr->win, (ptr->size_x_map / 2) * 50, \
-	(ptr->size_y_map / 2) * 50, 0x0000FF00, "YOU WIN");
+	if (index < 120)
+	{
+		ft_exit_helper(ptr, index);
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->img.img, y * 50, x * 50);
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->exit.img, y * 50, x * 50);
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->player.img, y * 50, x * 50);
+	}
+	else
+	{
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->img.img, y * 50, x * 50);
+		ptr->finish = 2;
+	}
 	index++;
 }
