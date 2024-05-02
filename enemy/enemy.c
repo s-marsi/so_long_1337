@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:52:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 10:05:24 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 08:29:44 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ void	right_route_helper(t_data *ptr, int *i, int *j)
 		ft_enemy_animation(ptr, *i, *j, 'N');
 }
 
-int	right_route(t_data *ptr, int *i, int *j)
+void	right_route(t_data *ptr, int *i, int *j)
 {
 	static int	c;
 	int			n;
 
 	c++;
 	n = (25 / (ptr->player.item_eaten + 1));
+	if (n < 10)
+		n = 10;
 	if (c % n == 0)
 	{
 		if (ptr->map_str[*i][*j + 1] == 'P')
@@ -43,7 +45,6 @@ int	right_route(t_data *ptr, int *i, int *j)
 			ptr->map_str[*i][*j] = 'n';
 		right_route_helper(ptr, i, j);
 	}
-	return (0);
 }
 
 void	left_route_helper(t_data *ptr, int *i, int *j)
@@ -54,7 +55,7 @@ void	left_route_helper(t_data *ptr, int *i, int *j)
 		ft_enemy_animation(ptr, *i, *j, 'n');
 }
 
-int	left_route(t_data *ptr, int *i, int *j)
+void	left_route(t_data *ptr, int *i, int *j)
 {
 	static int	c;
 	int			n;
@@ -77,5 +78,4 @@ int	left_route(t_data *ptr, int *i, int *j)
 			ptr->map_str[*i][*j] = 'N';
 		left_route_helper(ptr, i, j);
 	}
-	return (0);
 }

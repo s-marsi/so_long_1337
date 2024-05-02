@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:46:27 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 09:33:35 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/01 14:54:18 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	move_right(t_data *ptr, int x, int y, int flag)
 	int	i;
 
 	ptr->player.animation = 0;
-	if (flag == 1)
+	if (flag)
 		ft_enemy_bombe(ptr, x + 1, y);
 	else if (flag == 2)
-		ft_destroy_all(ptr, "YOU LOSE :(", 1);
+		ft_destroy_all(ptr, 1, 1);
 	check_items(ptr, x + 1, y);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->img.img, x * 50, y * 50);
@@ -104,10 +104,10 @@ void	move_left(t_data *ptr, int x, int y, int flag)
 	int	i;
 
 	ptr->player.animation = 1;
-	if (flag == 1)
+	if (flag)
 		ft_enemy_bombe(ptr, x - 1, y);
 	else if (flag == 2)
-		ft_destroy_all(ptr, "YOU LOSE :(", 1);
+		ft_destroy_all(ptr, 1, 1);
 	check_items(ptr, x - 1, y);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->img.img, x * 50, y * 50);
