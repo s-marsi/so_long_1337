@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:02:05 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 09:37:23 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 10:59:27 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,6 @@ static void	up_animation(t_data *ptr, int index)
 	&ptr->size_x, &ptr->size_y);
 	free(path);
 }
-
-// static void	attack_animation(t_data *ptr, int index)
-// {
-// 	char	*path;
-
-// 	path = make_path(index, \
-// 	"./textures/player/player_sprite/idle/up/");
-// 	if (index == 3)
-// 		ptr->player.img_indx = 0;
-// 	else
-// 		ptr->player.img_indx++;
-// 	ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-// 	&ptr->size_x, &ptr->size_y);
-// 	free(path);
-// }
 
 void	ft_player_animation(t_data *ptr, int i, int j)
 {

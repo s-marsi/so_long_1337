@@ -12,7 +12,7 @@ FILES = get_next_line/get_next_line_utils.c get_next_line/get_next_line.c collec
 		ft_draw.c enemy/enemy.c enemy/enemy_explosion.c enemy/enemy_animation.c helpers.c key_manager.c \
 		moves/left_right_moves.c moves/up_down_moves.c moves/moves_helpers.c exit.c enemy/enemy2.c  moves/attack_moves.c\
 		player/player.c parcing/check_images.c parcing/check_images2.c parcing/map_handling.c parcing/check_double.c \
-		parcing/floodfill.c helpers2.c win.c hook.c main.c
+		parcing/floodfill.c helpers2.c win.c lose/lose.c lose/lose2.c hook.c main.c
 
 FILES_O = $(FILES:.c=.o)
 

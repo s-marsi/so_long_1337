@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 07:06:50 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 08:26:10 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 11:02:01 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	call_img(t_data *ptr, char *path, int i)
 	free(path);
 }
 
-void	draw_player(t_data *ptr, int x, int y)
+static void	draw_player(t_data *ptr, int x, int y)
 {
 	int		n;
 	char	*path;
@@ -41,7 +41,7 @@ void	draw_player(t_data *ptr, int x, int y)
 	free(path);
 }
 
-void	draw_win(t_data *ptr)
+static void	draw_win(t_data *ptr)
 {
 	int (x), (y);
 	x = ((ptr->size_y_map / 2)) * 50;
@@ -67,7 +67,7 @@ void	draw_win(t_data *ptr)
 	draw_player(ptr, x, y);
 }
 
-void	win_bomb(t_data *ptr, int i, int j)
+static void	win_bomb(t_data *ptr, int i, int j)
 {
 	int		n;
 	char	*path;

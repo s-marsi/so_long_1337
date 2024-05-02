@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:31:19 by smarsi            #+#    #+#             */
-/*   Updated: 2024/04/27 13:17:42 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 10:21:35 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	ft_bombe_line(t_data *ptr, int i, int j, int index)
 	int (pl_indx), (ene_indx);
 	pl_indx = ptr->player.img_indx;
 	ene_indx = ptr->enemy.img_indx;
-	if (index % 3000 == 0)
+	if (index % 9000 == 0)
 	{
-		path = make_path(ene_indx, "./textures/player/enemy/attack/");
+		path = make_path(ene_indx, "./textures/player/enemy/dead/");
 		path2 = make_path(pl_indx, "./textures/player/player_sprite/dead/");
 		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
 		&ptr->size_x, &ptr->size_y);
@@ -47,9 +47,9 @@ static void	ft_bombe_line(t_data *ptr, int i, int j, int index)
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
-		ptr->enemy.img, j * 50, i * 50);
-		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->player.img, j * 50, i * 50);
+		mlx_put_image_to_window(ptr->mlx, ptr->win, \
+		ptr->enemy.img, j * 50, i * 50);
 	}
 }
 
@@ -58,14 +58,15 @@ void	ft_enemy_bombe(t_data *ptr, int i, int j)
 	static int	index;
 
 	ptr->bomb = 1;
-	if (ptr->enemy.img_indx > 9)
+	if (ptr->enemy.img_indx > 2)
 	{
 		ptr->bomb = 2;
+		ptr->player.img_indx = 0;
 		ptr->enemy.img_indx = 0;
 		return ;
 	}
-	if (ptr->player.img_indx > 9)
-		ptr->player.img_indx = 9;
+	if (ptr->player.img_indx > 2)
+		ptr->player.img_indx = 2;
 	index++;
 	ft_bombe_line(ptr, i, j, index);
 }
