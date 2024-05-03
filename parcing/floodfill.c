@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:02:14 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:22:18 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:36:38 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	change_map(t_data *ptr, int i, int j)
 	if (i < 0 || j < 0 || i >= len_i || j >= len_j
 		|| ptr->map_check[i][j] == '1' || ptr->map_check[i][j] == '2')
 		return ;
+	else if (ptr->map_check[i][j] == 'E')
+	{
+		ptr->map_check[i][j] = '2';
+		return ;
+	}
 	else
 	{
 		ptr->map_check[i][j] = '2';
@@ -47,7 +52,7 @@ void	check_map(t_data *ptr)
 			{
 				ft_free(ptr->map_check);
 				ft_putstr_fd("player cannot eat all items or exit.\n", 2);
-				exit(2);
+				exit(1);
 			}
 			j++;
 		}

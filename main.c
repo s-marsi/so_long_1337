@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:45:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:23:31 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 12:04:42 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char *av[])
 	t_data	ptr;
 
 	if (ac < 2)
-		exit(-1);
+		exit(1);
 	check_images();
 	is_valid_map(av[1]);
 	ptr.map_str = get_map(&ptr, av[1]);

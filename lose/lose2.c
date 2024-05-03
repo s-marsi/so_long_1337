@@ -6,13 +6,13 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:57:08 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 11:16:18 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/02 15:12:40 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void    game_over_two_(t_data *ptr, int x, int y)
+void	game_over_two_(t_data *ptr, int x, int y)
 {
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->img.img, (y) * 50, x);
@@ -32,10 +32,10 @@ void    game_over_two_(t_data *ptr, int x, int y)
 	ptr->img.img, (y + 8) * 50, x);
 }
 
-void    game_over(t_data *ptr, int x, int y)
+void	game_over(t_data *ptr, int x, int y)
 {
-    game_over_two_(ptr, x, y);
-    call_img(ptr, "./textures/lose/1/", 0);
+	game_over_two_(ptr, x, y);
+	call_img(ptr, "./textures/lose/1/", 0);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->exit.img, (y) * 50, x);
 	call_img(ptr, "./textures/lose/1/", 1);
@@ -61,10 +61,10 @@ void    game_over(t_data *ptr, int x, int y)
 	ptr->exit.img, (y + 8) * 50, x);
 }
 
-void    game_over_two(t_data *ptr, int x, int y)
+void	game_over_two(t_data *ptr, int x, int y)
 {
-    game_over_two_(ptr, x, y);
-    call_img(ptr, "./textures/lose/2/", 0);
+	game_over_two_(ptr, x, y);
+	call_img(ptr, "./textures/lose/2/", 0);
 	mlx_put_image_to_window(ptr->mlx, ptr->win, \
 	ptr->exit.img, (y) * 50, x);
 	call_img(ptr, "./textures/lose/2/", 1);
