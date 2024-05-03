@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 15:15:22 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:54:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void	ft_win(t_data *ptr, int i, int j);
 void	ft_lose(t_data *ptr, int i, int j);
 void	game_over(t_data *ptr, int x, int y);
 void	game_over_two(t_data *ptr, int x, int y);
+int		close_key(int keycode, t_data *ptr);
 #endif
