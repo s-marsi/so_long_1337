@@ -6,11 +6,36 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 07:06:50 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 14:12:41 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:53:50 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_finish(t_data *ptr)
+{
+	char	**str;
+	int		i;
+	int		j;
+
+	str = ptr->map_str;
+	i = 0;
+	while (str[i])
+	{
+		if (i == 0 || !str[i + 1])
+		{
+			j = 0;
+			while (str[i][j] && str[i][j] != '\n')
+			{
+				if (str[i][j] != '0' && str[i][j] != '1')
+					return (0);
+				j++;
+			}
+		}
+		i++;
+	}
+	return (1);
+}
 
 void	call_img(t_data *ptr, char *path, int i)
 {
@@ -22,23 +47,15 @@ void	call_img(t_data *ptr, char *path, int i)
 
 static void	draw_player(t_data *ptr, int x, int y)
 {
-	int		n;
-	char	*path;
+	static int	c;
 
+	if (c++ == (100 * ptr->size_y_map) || c >= 1200)
+		ft_destroy_all(ptr, 0, 1);
 	if (ptr->player.img_indx > 3)
 		ptr->player.img_indx = 0;
-	n = ptr->player.img_indx;
-	y = ((ptr->size_x_map / 2)) * 50;
-	x = ((ptr->size_y_map / 2)) * 50;
-	path = make_path(n, "./textures/player/player_sprite/idle/left/");
-	ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-	&ptr->size_x, &ptr->size_y);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->img.img, y, x);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->player.img, y, x);
-	ptr->player.img_indx++;
-	free(path);
+	y = ((ptr->size_x_map / 2));
+	x = ((ptr->size_y_map / 2));
+	ft_player_animation(ptr, x, y, 1);
 }
 
 static void	draw_win(t_data *ptr)
@@ -67,42 +84,20 @@ static void	draw_win(t_data *ptr)
 	draw_player(ptr, x, y);
 }
 
-static void	win_bomb(t_data *ptr, int i, int j)
-{
-	int		n;
-	char	*path;
-
-	if (ptr->enemy2.img_indx > 2)
-		ptr->enemy2.img_indx = 0;
-	n = ptr->enemy2.img_indx;
-	path = make_path(n, "./textures/player/enemy4/dead/");
-	ptr->enemy2.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-	&ptr->size_x, &ptr->size_y);
-	free(path);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->enemy2.img, j * 50, i * 50);
-	ptr->enemy2.img_indx++;
-	if (n == 2)
-	{
-		n = 0;
-		ptr->map_str[i][j] = '0';
-		mlx_put_image_to_window(ptr->mlx, ptr->win, \
-		ptr->img.img, j * 50, i * 50);
-	}
-}
-
 void	ft_win(t_data *ptr, int i, int j)
 {
 	static int	c;
 
 	draw_win(ptr);
 	c++;
-	if (c == 1200)
-		ft_destroy_all(ptr, 0, 1);
-	if (ptr->map_str[i][j] == 'B' || ptr->map_str[i][j] == 'N'
-	|| ptr->map_str[i][j] == 'n')
-		win_bomb(ptr, i, j);
-	else if (ptr->map_str[i][j] == '1')
+	
+	if ((ptr->map_str[i][j] == 'B' || ptr->map_str[i][j] == 'N'
+	|| ptr->map_str[i][j] == 'n') && check_finish(ptr))
+		lose_bomb(ptr, i, j);
+	else if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == 'E' || ptr->map_str[i][j] == 'P')
+	{
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);
+		ptr->map_str[i][j] = '0';
+	}
 }

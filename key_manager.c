@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:30:12 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 09:30:29 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:54:06 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ static void	new_image(t_data *ptr, int keycode)
 		attack_right(ptr, x, y);
 	else if (keycode == 3 && (n <= 2))
 		attack_left(ptr, x, y);
+}
+
+int	close_key(int keycode, t_data *ptr)
+{
+	(void) keycode;
+	(void) ptr;
+	exit(0);
+	return (0);
 }
 
 int	press_key(int keycode, t_data *ptr)

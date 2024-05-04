@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:45:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 12:04:42 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:54:01 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	create_windows(t_data *ptr)
 	ft_init(ptr);
 	ft_draw(ptr);
 	mlx_hook(ptr->win, 2, 0, press_key, ptr);
+	mlx_hook(ptr->win, 17, 0, close_key, ptr);
 	mlx_loop_hook(ptr->mlx, ft_collectible_animation, ptr);
 	ft_putstr_fd("MOVES : ", 1);
 	ft_putnbr_fd(ptr->moves_number, 1);

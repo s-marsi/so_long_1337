@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:24:40 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 12:06:10 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:39:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,8 @@ void	ft_init(t_data *ptr)
 	ptr->kill_all = 0;
 	ptr->moves_number = 0;
 	ptr->attack = 0;
+	ptr->enemy2.speed = 10;
+	ptr->enemy.speed = 10;
+	ptr->player.speed = 15;
 	ft_init_images(ptr);
 }

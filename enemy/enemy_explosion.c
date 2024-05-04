@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:31:19 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 15:17:43 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:11:47 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_bombe_line(t_data *ptr, int i, int j, int *index)
 	int (pl_indx), (ene_indx);
 	pl_indx = ptr->player.img_indx;
 	ene_indx = ptr->enemy.img_indx;
-	if (*index == 500)
+	if (*index >= ptr->enemy.speed)
 	{
 		path = make_path(ene_indx, "./textures/player/enemy/dead/");
 		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \

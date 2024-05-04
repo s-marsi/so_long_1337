@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:02:05 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 15:11:39 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:38:14 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ static void	up_animation(t_data *ptr, int index)
 	free(path);
 }
 
-void	ft_player_animation(t_data *ptr, int i, int j)
+void	ft_player_animation(t_data *ptr, int i, int j, int flag)
 {
 	static int	c;
 	int			index;
 
 	index = ptr->player.img_indx;
-	if (c % 10 == 0)
+	if (c == ptr->player.speed || flag)
 	{
 		if (ptr->player.animation == 0)
 			right_animation(ptr, index);
@@ -85,6 +85,7 @@ void	ft_player_animation(t_data *ptr, int i, int j)
 			&ptr->size_x, &ptr->size_y);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->player.img, j * 50, i * 50);
+	c = 0;
 	}
 	c++;
 }
