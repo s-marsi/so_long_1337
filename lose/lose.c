@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:05:46 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 14:37:06 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:53:58 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,18 @@ static void	draw_lose(t_data *ptr)
 	int (x), (y);
 	x = ((ptr->size_y_map / 2)) * 50;
 	y = ((ptr->size_x_map / 2) - 4);
-	if (c <= 50)
+	if (c >= ptr->enemy2.speed)
 	{
 		game_over(ptr, x, y);
 		draw_player(ptr, x, y);
+		c = 0;
 	}
 	else
 		game_over_two(ptr, x, y);
-	if (c == 100)
-		c = 0;
 	c++;
 }
 
-static void	lose_bomb(t_data *ptr, int i, int j)
+void	lose_bomb(t_data *ptr, int i, int j)
 {
 	int		n;
 	char	*path;
@@ -82,9 +81,8 @@ void	ft_lose(t_data *ptr, int i, int j)
 
 	draw_lose(ptr);
 	c++;
-	if (c == 800)
-		ft_destroy_all(ptr, 1, 1);
-	if (ptr->map_str[i][j] == 'C')
+	
+	if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == 'E' || ptr->map_str[i][j] == 'P')
 	{
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);
@@ -93,13 +91,6 @@ void	ft_lose(t_data *ptr, int i, int j)
 	else if (ptr->map_str[i][j] == 'B' || ptr->map_str[i][j] == 'N'
 		|| ptr->map_str[i][j] == 'n')
 		lose_bomb(ptr, i, j);
-	else if (ptr->map_str[i][j] == '1' || ptr->map_str[i][j] == 'E')
-		mlx_put_image_to_window(ptr->mlx, ptr->win, \
-		ptr->img.img, j * 50, i * 50);
-	else if (ptr->map_str[i][j] == 'P')
-	{
-		mlx_put_image_to_window(ptr->mlx, ptr->win, \
-		ptr->img.img, j * 50, i * 50);
-		ptr->map_str[i][j] = '0';
-	}
+	if (c == (100 * ptr->size_y_map) || c >= 1200)
+		ft_destroy_all(ptr, 1, 1);
 }

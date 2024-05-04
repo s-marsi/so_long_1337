@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/03 09:54:23 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:36:58 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_img
 	int		img_indx;
 	int		animation;
 	int		item_eaten;
+	int		speed;
 }	t_img;
 typedef struct s_data
 {
@@ -77,7 +78,7 @@ void	ft_exit_animation(t_data *ptr, int x, int y);
 void	bombe_animation(t_data *ptr, int i, int j);
 void	ft_enemy_bombe(t_data *ptr, int i, int j);
 char	*make_path(int nb, char *path);
-void	ft_player_animation(t_data *ptr, int i, int j);
+void	ft_player_animation(t_data *ptr, int i, int j, int flag);
 void	blow_up(t_data *ptr, int i, int j);
 char	*make_path(int nb, char *path);
 char	*ft_strjoin2(char *s1, char *s2);
@@ -99,4 +100,6 @@ void	ft_lose(t_data *ptr, int i, int j);
 void	game_over(t_data *ptr, int x, int y);
 void	game_over_two(t_data *ptr, int x, int y);
 int		close_key(int keycode, t_data *ptr);
+void	lose_bomb(t_data *ptr, int i, int j);
+int		check_finish(t_data *ptr);
 #endif

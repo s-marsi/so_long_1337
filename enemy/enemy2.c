@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:53:02 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 08:30:59 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:24:59 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,13 @@ void	bombe_animation(t_data *ptr, int i, int j)
 {
 	char		*path;
 	static int	c;
+	int			index;
 
-	int (n), (index);
-	n = (15 / (ptr->player.item_eaten + 1)) + 1;
-	if (n < 8)
-		n = 8;
-	if (c % n == 0)
+	if (c >= ptr->enemy2.speed)
 	{
 		index = ptr->enemy2.img_indx;
 		path = make_path(index, "./textures/player/enemy4/");
-		if (index == 9)
+		if (index >= 9)
 			ptr->enemy2.img_indx = 0;
 		else
 			ptr->enemy2.img_indx++;
@@ -37,6 +34,7 @@ void	bombe_animation(t_data *ptr, int i, int j)
 		ptr->enemy2.img, j * 50, i * 50);
 		free(path);
 		mlx_destroy_image(ptr->mlx, ptr->enemy2.img);
+		c = 0;
 	}
 	c++;
 }

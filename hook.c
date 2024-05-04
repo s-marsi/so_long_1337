@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:15:49 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 15:15:13 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:36:37 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_collectible_helper(t_data *ptr, int i, int j)
 	else if (ptr->map_str[i][j] == 'B')
 		bombe_animation(ptr, i, j);
 	else if (ptr->map_str[i][j] == 'P')
-		ft_player_animation(ptr, i, j);
+		ft_player_animation(ptr, i, j, 0);
 }
 
 int	ft_collectible_animation(t_data *ptr)
