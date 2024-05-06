@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:05:46 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/03 11:53:58 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/06 12:19:41 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	ft_lose(t_data *ptr, int i, int j)
 
 	draw_lose(ptr);
 	c++;
-	
-	if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == 'E' || ptr->map_str[i][j] == 'P')
+	if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == 'E'
+	|| ptr->map_str[i][j] == 'P')
 	{
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);

@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 07:06:50 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/03 11:53:50 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/06 12:19:31 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ void	ft_win(t_data *ptr, int i, int j)
 
 	draw_win(ptr);
 	c++;
-	
 	if ((ptr->map_str[i][j] == 'B' || ptr->map_str[i][j] == 'N'
 	|| ptr->map_str[i][j] == 'n') && check_finish(ptr))
 		lose_bomb(ptr, i, j);
-	else if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == 'E' || ptr->map_str[i][j] == 'P')
+	else if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == 'E'
+	|| ptr->map_str[i][j] == 'P')
 	{
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->img.img, j * 50, i * 50);
