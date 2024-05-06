@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:09:03 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 12:08:43 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/06 16:11:17 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	get_w_h(t_data *ptr, char **str)
 	int		j;
 
 	i = 0;
+	if (!str || !*str)
+		ft_error(str);
 	len = ft_strlen(str[0]);
 	while (str[i] != NULL)
 	{
@@ -88,6 +90,11 @@ char	**get_map(t_data *ptr, char *file_name)
 	char	**return_str;
 	int		fd;
 
+	if (open(file_name, O_DIRECTORY) != -1)
+	{
+		ft_putstr_fd("Not a File.\n", 2);
+		exit(1);
+	}
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{

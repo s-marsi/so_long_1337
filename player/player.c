@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:02:05 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/06 12:22:12 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:38:14 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_player_animation(t_data *ptr, int i, int j, int flag)
 			&ptr->size_x, &ptr->size_y);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 		ptr->player.img, j * 50, i * 50);
-		c = 0;
+	c = 0;
 	}
 	c++;
 }
