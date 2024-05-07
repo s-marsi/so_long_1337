@@ -6,118 +6,116 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:20:37 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/01 06:20:01 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/07 07:19:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	put_img(t_data *ptr, int i, int j)
-{
-	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img.img, j * 50, i * 50);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->enemy.img, j * 50, i * 50);
-}
-
-static void	right_animation(t_data *ptr, int *a, int *index)
+void	enemy_right(t_data *ptr)
 {
 	char	*path;
+	int		index;
 
-	int (i), (j);
-	i = a[0];
-	j = a[1];
-	path = NULL;
-	if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == '1')
-		path = "./textures/player/enemy/right/0.xpm";
-	else if (*index <= 1)
-		path = "./textures/player/enemy/right/0.xpm";
-	else if (*index <= 2)
-		path = "./textures/player/enemy/right/1.xpm";
-	else if (*index <= 5)
-	{
-		path = "./textures/player/enemy/right/2.xpm";
-		*index = 0;
-	}
+	if (ptr->enemy.img_indx > 2)
+		ptr->enemy.img_indx = 0;
+	index = ptr->enemy.img_indx;
+	path = make_path(index, \
+	"./textures/player/enemy/right/");
 	if (path)
+	{
 		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
 		&ptr->size_x, &ptr->size_y);
+		free(path);
+		check_img(ptr, ptr->enemy.img);
+		path = NULL;
+	}
+}
+
+void	enemy_left(t_data *ptr)
+{
+	char	*path;
+	int		index;
+
+	if (ptr->enemy.img_indx > 2)
+		ptr->enemy.img_indx = 0;
+	index = ptr->enemy.img_indx;
+	path = make_path(index, \
+	"./textures/player/enemy/left/");
+	if (path)
+	{
+		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
+		&ptr->size_x, &ptr->size_y);
+		free(path);
+		check_img(ptr, ptr->enemy.img);
+		path = NULL;
+	}
 }
 
 void	ft_enemy_animation(t_data *ptr, int i, int j, char c)
 {
-	static int	index;
-	char		*path;
-	int			a[2];
+	static int	n;
 
-	a[0] = i;
-	a[1] = j;
-	path = NULL;
-	if (c == 'n')
+	if (ptr->player.item_eaten > ptr->num_item / 2)
 	{
-		if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == '1'
-		|| index <= 1)
-			path = "./textures/player/enemy/left/0.xpm";
-		else if (index <= 2)
-			path = "./textures/player/enemy/left/1.xpm";
-		else if (index <= 5)
-		{
-			path = "./textures/player/enemy/left/2.xpm";
-			index = 0;
-		}
-		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-			&ptr->size_x, &ptr->size_y);
+		if (c == 'N')
+			enemy_right2(ptr);
+		else
+			enemy_left2(ptr);
 	}
 	else
-		right_animation(ptr, a, &index);
-	(put_img(ptr, i, j), index++);
+	{
+		if (c == 'N')
+			enemy_right(ptr);
+		else
+			enemy_left(ptr);
+	}
+	if (n >= (ptr->enemy.speed * 20))
+	{
+		ptr->enemy.img_indx++;
+		n = 0;
+	}
+	display_img(ptr, ptr->enemy.img, i, j);
+	mlx_destroy_image(ptr->mlx, ptr->enemy.img);
+	n++;
 }
 
-void	right_animation2(t_data *ptr, int *a, int *index)
+void	enemy_right2(t_data *ptr)
 {
-	char		*path;
+	char	*path;
+	int		index;
 
-	int (i), (j);
-	i = a[0];
-	j = a[1];
-	path = NULL;
-	if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == '1')
-		path = "./textures/player/enemy/angry/right/0.xpm";
-	else if (*index <= 1)
-		path = "./textures/player/enemy/angry/right/0.xpm";
-	else if (*index <= 2)
-	{
-		path = "./textures/player/enemy/angry/right/1.xpm";
-		*index = 0;
-	}
+	if (ptr->enemy.img_indx > 1)
+		ptr->enemy.img_indx = 0;
+	index = ptr->enemy.img_indx;
+	path = make_path(index, \
+	"./textures/player/enemy/angry/right/");
 	if (path)
+	{
 		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
 		&ptr->size_x, &ptr->size_y);
+		free(path);
+		check_img(ptr, ptr->enemy.img);
+		path = NULL;
+	}
 }
 
-void	ft_enemy_animation2(t_data *ptr, int i, int j, char c)
+void	enemy_left2(t_data *ptr)
 {
-	static int	index;
-	char		*path;
-	int			a[2];
+	char	*path;
+	int		index;
 
-	a[0] = i;
-	a[1] = j;
-	path = NULL;
-	if (c == 'n')
+	if (ptr->enemy.img_indx > 1)
+		ptr->enemy.img_indx = 0;
+	index = ptr->enemy.img_indx;
+	path = make_path(index, \
+	"./textures/player/enemy/angry/left/");
+	if (path)
 	{
-		if (ptr->map_str[i][j] == 'C' || ptr->map_str[i][j] == '1')
-			path = "./textures/player/enemy/angry/left/0.xpm";
-		else if (index <= 1)
-			path = "./textures/player/enemy/angry/left/0.xpm";
-		else if (index <= 2)
-		{
-			path = "./textures/player/enemy/angry/left/1.xpm";
-			index = 0;
-		}
-		if (path)
-			ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-			&ptr->size_x, &ptr->size_y);
+		ptr->enemy.img = mlx_xpm_file_to_image(ptr->mlx, path, \
+		&ptr->size_x, &ptr->size_y);
+		free(path);
+		check_img(ptr, ptr->enemy.img);
+		path = NULL;
 	}
-	else
-		right_animation2(ptr, a, &index);
-	(put_img(ptr, i, j), index++);
 }

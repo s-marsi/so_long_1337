@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:09:03 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/06 16:11:17 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/07 09:24:37 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,24 @@ static void	get_w_h(t_data *ptr, char **str)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	if (!str || !*str)
 		ft_error(str);
 	len = ft_strlen(str[0]);
-	while (str[i] != NULL)
+	while (str[++i] != NULL)
 	{
 		if (i == 0 || !str[i + 1])
 		{
 			j = 0;
 			while (str[i][j] && str[i][j] != '\n')
 			{
-				if (str[i][j] != '1')
+				if (str[i][j++] != '1')
 					ft_error(str);
-				j++;
 			}
 		}
 		if (len != ft_strlen(str[i]) || str[i][0] != '1'
 			|| str[i][len - 2] != '1')
 			ft_error(str);
-		i++;
 	}
 	ptr->size_x_map = len - 1;
 	ptr->size_y_map = i;
