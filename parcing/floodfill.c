@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:02:14 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/03 09:36:38 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/07 08:55:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,17 @@ void	get_player_position(t_data *ptr, int *x, int *y)
 		while (ptr->map_check[i][j])
 		{
 			if (ptr->map_check[i][j] == 'P')
-				break ;
+			{
+				ptr->player.pos_x = j;
+				ptr->player.pos_y = i;
+				*x = i;
+				*y = j;
+				return ;
+			}
 			j++;
 		}
-		if (ptr->map_check[i][j] == 'P')
-			break ;
 		i++;
 	}
-	*x = i;
-	*y = j;
 }
 
 void	flood_fill(t_data *ptr)
@@ -89,6 +91,12 @@ void	flood_fill(t_data *ptr)
 	int (i), (j);
 	i = 0;
 	get_player_position(ptr, &i, &j);
+	if (ptr->map_str[i][j + 1] == 'N')
+	{
+		ft_free(ptr->map_check);
+		ft_putstr_fd("Players lose at the beginning of the game.\n", 2);
+		exit(1);
+	}
 	change_map(ptr, i, j);
 	check_map(ptr);
 }

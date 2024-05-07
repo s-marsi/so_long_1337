@@ -6,32 +6,37 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 06:34:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/02 08:31:50 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/07 08:59:49 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static void	attack_enemy(t_data *ptr, int x, int y)
+void	attack_enemy(t_data *ptr, int x, int y)
 {
 	char		*path;
-	static int	n;
+	static int	c;
 
-	path = make_path(n, "./textures/player/enemy4/dead/");
+	if (ptr->enemy2.animation > 2)
+		ptr->enemy2.animation = 2;
+	path = make_path(ptr->enemy2.animation, "./textures/player/enemy4/dead/");
 	ptr->enemy2.img = mlx_xpm_file_to_image(ptr->mlx, path, \
-	&ptr->size_x, &ptr->size_y);
-	free(path);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, \
-	ptr->enemy2.img, x * 50, y * 50);
-	n++;
-	if (n == 3)
+		&ptr->size_x, &ptr->size_y);
+	if (path)
+		free(path);
+	check_img(ptr, ptr->enemy2.img);
+	if (c++ >= moves_speed(ptr))
+	{
+		ptr->enemy2.animation++;
+		c = 0;
+	}
+	if (ptr->enemy2.animation >= 3)
 	{
 		ptr->attack = 0;
-		n = 0;
+		c = 0;
 		ptr->player.img_indx = 0;
-		ptr->map_str[y][x] = '0';
-		mlx_put_image_to_window(ptr->mlx, ptr->win, \
-		ptr->img.img, x * 50, y * 50);
+		ptr->enemy2.animation = 0;
+		ptr->map_str[x][y] = '0';
 	}
 }
 
@@ -40,11 +45,12 @@ void	attack_right_helper(t_data *ptr, int i, int x, int y)
 	char	*path;
 
 	path = NULL;
-	if (i >= 4 && ptr->map_str[y][x + 1] == 'B')
-		attack_enemy(ptr, x + 1, y);
-	else if (i >= 4 && ptr->map_str[y + 1][x] == 'B')
-		attack_enemy(ptr, x, y + 1);
-	else if (i >= 4)
+	if (i >= 2)
+	{
+		(is_enemy2(ptr, x - 1, y), is_enemy2(ptr, x + 1, y));
+		(is_enemy2(ptr, x, y - 1), is_enemy2(ptr, x, y + 1));
+	}
+	if (i >= 4)
 	{
 		i = 3;
 		ptr->attack = 0;
@@ -57,7 +63,9 @@ void	attack_right_helper(t_data *ptr, int i, int x, int y)
 	{
 		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
 		&ptr->size_x, &ptr->size_y);
-		free(path);
+		if (path)
+			free(path);
+		check_img(ptr, ptr->player.img);
 	}
 }
 
@@ -65,6 +73,7 @@ void	attack_right(t_data *ptr, int x, int y)
 {
 	static int	c;
 	int			i;
+	int			n;
 
 	if (ptr->attack == 0)
 	{
@@ -73,13 +82,17 @@ void	attack_right(t_data *ptr, int x, int y)
 	}
 	i = ptr->player.img_indx;
 	c++;
-	if (c % 15 == 0)
+	n = 7;
+	if (ptr->size_y_map >= 25 || ptr->size_x_map >= 50)
+		n = 3;
+	if (c == n)
 	{
 		attack_right_helper(ptr, i, x, y);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 			ptr->img.img, x * 50, y * 50);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 			ptr->player.img, x * 50, y * 50);
+		c = 0;
 	}
 }
 
@@ -88,11 +101,11 @@ void	attack_left_helper(t_data *ptr, int i, int x, int y)
 	char	*path;
 
 	path = NULL;
-	if (i >= 4 && ptr->map_str[y][x - 1] == 'B')
-		attack_enemy(ptr, x - 1, y);
-	else if (i >= 4 && ptr->map_str[y + 1][x] == 'B')
-		attack_enemy(ptr, x, y + 1);
-	else if (i >= 4)
+	is_enemy2(ptr, x - 1, y);
+	is_enemy2(ptr, x + 1, y);
+	is_enemy2(ptr, x, y - 1);
+	is_enemy2(ptr, x, y + 1);
+	if (i >= 4)
 	{
 		i = 3;
 		ptr->attack = 0;
@@ -106,7 +119,9 @@ void	attack_left_helper(t_data *ptr, int i, int x, int y)
 	{
 		ptr->player.img = mlx_xpm_file_to_image(ptr->mlx, path, \
 		&ptr->size_x, &ptr->size_y);
-		free(path);
+		if (path)
+			free(path);
+		check_img(ptr, ptr->player.img);
 	}
 }
 
@@ -114,6 +129,7 @@ void	attack_left(t_data *ptr, int x, int y)
 {
 	static int	c;
 	int			i;
+	int			n;
 
 	if (ptr->attack == 0)
 	{
@@ -122,12 +138,16 @@ void	attack_left(t_data *ptr, int x, int y)
 	}
 	i = ptr->player.img_indx;
 	c++;
-	if (c % 15 == 0)
+	n = 7;
+	if (ptr->size_y_map >= 25 || ptr->size_x_map >= 50)
+		n = 3;
+	if (c >= moves_speed(ptr))
 	{
 		attack_left_helper(ptr, i, x, y);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 			ptr->img.img, x * 50, y * 50);
 		mlx_put_image_to_window(ptr->mlx, ptr->win, \
 			ptr->player.img, x * 50, y * 50);
+		c = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:38:18 by smarsi            #+#    #+#             */
-/*   Updated: 2024/05/03 11:36:58 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/05/07 08:51:49 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	int		size_y_map;
 	int		num_item;
 	int		finish;
+	int		winer;
 	int		kill_all;
 	int		attack;
 	int		bomb;
@@ -60,7 +61,7 @@ char	*ft_strchr(const char *s, int c);
 char	*read_all(int fd, char *last);
 void	ft_free(char **s);
 char	**get_map(t_data *ptr, char *file_name);
-int		ft_collectible_animation(t_data *ptr);
+int		ft_collectible_animation(t_data *ptr, int x, int y);
 void	ft_free(char **s);
 void	ft_init(t_data *ptr);
 int		ft_draw(t_data *ptr);
@@ -79,7 +80,6 @@ void	bombe_animation(t_data *ptr, int i, int j);
 void	ft_enemy_bombe(t_data *ptr, int i, int j);
 char	*make_path(int nb, char *path);
 void	ft_player_animation(t_data *ptr, int i, int j, int flag);
-void	blow_up(t_data *ptr, int i, int j);
 char	*make_path(int nb, char *path);
 char	*ft_strjoin2(char *s1, char *s2);
 void	ft_collectible_img(t_data *ptr);
@@ -88,18 +88,34 @@ void	check_images(void);
 void	is_valid_map(char *name);
 void	flood_fill(t_data *ptr);
 void	ft_enemy_animation(t_data *ptr, int i, int j, char c);
-void	ft_enemy_animation2(t_data *ptr, int i, int j, char c);
 void	check_double(t_data *ptr);
 void	print_moves(t_data *ptr);
-void	print_moves2(t_data *ptr);
 void	attack_right(t_data *ptr, int x, int y);
 void	attack_left(t_data *ptr, int x, int y);
 void	call_img(t_data *ptr, char *path, int i);
-void	ft_win(t_data *ptr, int i, int j);
-void	ft_lose(t_data *ptr, int i, int j);
+void	ft_win(t_data *ptr);
+void	ft_lose(t_data *ptr);
 void	game_over(t_data *ptr, int x, int y);
 void	game_over_two(t_data *ptr, int x, int y);
 int		close_key(int keycode, t_data *ptr);
 void	lose_bomb(t_data *ptr, int i, int j);
 int		check_finish(t_data *ptr);
+void	display_img(t_data *ptr, void *img, int i, int j);
+void	count_item(t_data *ptr);
+int		enemy_speed(t_data *ptr);
+void	enemy_right(t_data *ptr);
+void	enemy_left(t_data *ptr);
+void	enemy_right2(t_data *ptr);
+void	enemy_left2(t_data *ptr);
+int		check_no_enemy(t_data *ptr);
+void	ft_enemy_bombe2(t_data *ptr, int i, int j);
+void	attack_enemy(t_data *ptr, int x, int y);
+void	check_img(t_data *ptr, void *img);
+void	is_enemy2(t_data *ptr, int x, int y);
+void	lose_win(t_data *ptr);
+void	player_draw(t_data *ptr, int i, int j);
+void	exit_draw(t_data *ptr, int i, int j);
+void	enemy_draw(t_data *ptr, int i, int j);
+void	collection_draw(t_data *ptr, int i, int j);
+int		moves_speed(t_data *ptr);
 #endif
