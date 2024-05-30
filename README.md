@@ -44,7 +44,7 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
         - <code>./so_long</code> : the name of the program. <br>
         - <code>maps</code> : The folder that stores map files. <br>
         - <code>map5.ber</code> : The file containing the map data. (you can make your own map)<br>
-        - In the map file, you will find the following letters: 0, 1, C, E, P, N, B.
+        - In the map file, you will find the following letters: 0, 1, C, E, P, N, B. <br>
          0 represents an empty space.
          1 represents a wall.
          C represents a collectible.
