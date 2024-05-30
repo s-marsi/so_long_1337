@@ -1,8 +1,8 @@
 # so_long_1337
 Discover the world of computer graphics with so_long_1337, a 2D game project using MiniLibX. Experience engaging gameplay and unleash your creativity in graphics programming.
 
-<img src="textures/github/1.png" alt="Image Alt Text" width="500"> <img src="textures/github/2.png" alt="Image Alt Text" width="500">
-<img src="textures/github/3.png" alt="Image Alt Text" width="500"> <img src="textures/github/4.png" alt="Image Alt Text" width="500">
+<img src="textures/github/1.png" alt="Image Alt Text" width="600"> <img src="textures/github/2.png" alt="Image Alt Text" width="600">
+<img src="textures/github/3.png" alt="Image Alt Text" width="600"> <img src="textures/github/4.png" alt="Image Alt Text" width="600">
 
 ## Table of Contents
 - [Subject](#subject)
