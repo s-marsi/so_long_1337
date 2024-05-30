@@ -1,6 +1,8 @@
 # so_long_1337
 Discover the world of computer graphics with so_long_1337, a 2D game project using MiniLibX. Experience engaging gameplay and unleash your creativity in graphics programming.
 
+<img src="image-url.png" alt="Image Alt Text" width="300"> <img src="image-url.png" alt="Image Alt Text" width="300">
+
 ## Table of Contents
 - [Subject](#subject)
 - [Description](#description)
@@ -36,7 +38,7 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
     ```
 3. Usage :
     <ul>
-      <li>Execute in your bash terminal: <code>./so_long maps/map5.ber</code></li>
+      <li>Execute in your bash terminal: <code>./so_long folder/file.ber</code></li>
       <li> 
         - <code>./so_long</code> : the name of the program. <br>
         - <code>maps</code> : The folder that stores map files. <br>
@@ -49,6 +51,9 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
          P represents the player's starting position.
          N represents the black bomb.
          B represents the red bomb.
+      </li>
+      <li> 
+        The map file should have a .ber extension.
       </li>
       <li> For example : <br>
         <pre><code>./so_long maps/map5.ber</code></pre>
