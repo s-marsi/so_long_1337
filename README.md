@@ -2,12 +2,12 @@
 Discover the world of computer graphics with so_long_1337, a 2D game project using MiniLibX. Experience engaging gameplay and unleash your creativity in graphics programming.
 
 <p float="left">
-  <img src="extures/github/1.png" width="400" />
-  <img src="extures/github/2.png" width="400" />
+  <img src="textures/github/1.png" width="400" />
+  <img src="textures/github/2.png" width="400" />
 </p>
 <p float="left">
-  <img src="extures/github/3.png" width="400" />
-  <img src="extures/github/4.png" width="400" />
+  <img src="textures/github/3.png" width="400" />
+  <img src="textures/github/4.png" width="400" />
 </p>
 
 ## Table of Contents
