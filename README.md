@@ -40,7 +40,7 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
     ```
 2. Compile the program:
     ```bash
-    make  # This will generate the pipex program.
+    make  # This will generate the so_long program.
     make clean      # This will remove object files.
     ```
 3. Usage :
