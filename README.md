@@ -75,5 +75,5 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
     - S: Move down
     - D: Move right
 
-https://github.com/s-marsi/so_long_1337/assets/44604696/da6557a1-e2d3-4d8e-87f7-85acccb83039
+![Screen Recording](https://github.com/s-marsi/so_long_1337/assets/44604696/44e7b19d-a4d0-4b4f-a46d-b67540a75715)
 
