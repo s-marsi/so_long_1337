@@ -66,4 +66,11 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
         <pre><code>./so_long maps/map5.ber</code></pre>
       </li>
     </ul>
+    
+    ### How to Play
 
+    Use the W, A, S, and D keys to move the player character:
+    - W: Move up
+    - A: Move left
+    - S: Move down
+    - D: Move right
