@@ -74,7 +74,6 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
     - A: Move left
     - S: Move down
     - D: Move right
-
   ![Design sans titre](https://github.com/s-marsi/so_long_1337/assets/44604696/ead75d3f-7369-41c2-bcad-d4b25886e6ab)
 
 
