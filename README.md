@@ -17,7 +17,7 @@ Discover the world of computer graphics with so_long_1337, a 2D game project usi
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-
+- [How to Play](#how-to-play)
 ## Subject :
 <ol style="margin-left: 15px;">
   <li style="font-size: 20px; font-weight: 600; color: red;">
